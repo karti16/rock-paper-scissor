@@ -1,17 +1,27 @@
-const playerInput = "Rock";
 let compScore = 0;
 let playerScore = 0;
 result = game();
 console.log(result);
 
+function getUserInput() {
+  let input = prompt(
+    "Play! Input your option. Rock, Paper or Scissor",
+    undefined
+  );
+  return input.toLowerCase();
+}
+
 function game() {
   compScore = 0;
   playerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    gamePlay(computerPlay(), playerInput.toLowerCase());
+  for (let i = 1; i <= 5; i++) {
+    let winner = gamePlay(computerPlay(), getUserInput());
+    console.log(`Round ${i} Winner = ${winner}`);
   }
   return playerScore > compScore
     ? "Player Won the series"
+    : playerScore == compScore
+    ? "Series Tied"
     : "Computer Won the series";
 }
 
@@ -27,34 +37,34 @@ function gamePlay(computerSelection, playerSelection) {
     scissor: 1,
   };
   let sum = optionValue[computerSelection] + optionValue[playerSelection];
-  console.log(
-    `comp: ${computerSelection} | player : ${playerSelection} | sum : ${sum}`
-  );
+  //   console.log(
+  //     `comp: ${computerSelection} | player : ${playerSelection} | sum : ${sum}`
+  //   );
 
   switch (sum) {
     case 6:
       if (computerSelection == "rock") {
         playerScore++;
-        return "You Win! Paper beats Rock";
+        return "Player";
       } else {
         compScore++;
-        return "You Lose! Paper beats Rock";
+        return "Computer";
       }
     case 5:
       if (computerSelection == "rock") {
         compScore++;
-        return "You Lose! Rock beats Scissor";
+        return "Computer";
       } else {
         playerScore++;
-        return "You Win! Rock beats Scissor";
+        return "Player";
       }
     case 3:
       if (computerSelection == "paper") {
         playerScore++;
-        return "You Win! Scissor beats Paper";
+        return "Player";
       } else {
         compScore++;
-        return "You Lose! Scissor beats Paper";
+        return "Computer";
       }
     case 8:
     case 4:
