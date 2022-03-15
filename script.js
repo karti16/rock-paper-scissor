@@ -10,7 +10,7 @@ function getUserInput() {
   );
   return input.toLowerCase();
 }
-
+//Plays 5 rounds of game
 function game() {
   compScore = 0;
   playerScore = 0;
@@ -24,12 +24,12 @@ function game() {
     ? "Series Tied"
     : "Computer Won the series";
 }
-
+//Random input from computer
 function computerPlay() {
   let option = ["rock", "paper", "scissor"];
   return option[Math.floor(Math.random() * 3)];
 }
-
+// Game and return the winner
 function gamePlay(computerSelection, playerSelection) {
   let optionValue = {
     rock: 4,
