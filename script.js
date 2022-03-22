@@ -1,44 +1,44 @@
 let compScore = 0;
 let playerScore = 0;
 let matchTied = 0;
-result = game();
-console.log(result);
+let playerSelection = "";
 
-// Gets user input
-function getUserInput() {
-  let input = prompt(
-    "Play! Input your option. Rock, Paper or Scissor",
-    undefined
-  );
-  return input.toLowerCase();
-}
-//Random input as a player
-function randomUserInput() {
-  let option = ["rock", "paper", "scissor"];
-  return option[Math.floor(Math.random() * 3)];
-}
+const buttons = document.querySelectorAll(".option");
+const resetButton = document.querySelector("#reset-game");
 
-//Plays 5 rounds of game
-function game() {
-  for (let i = 1; i <= 5; i++) {
-    let winner = gamePlay(computerPlay(), randomUserInput());
-  }
-  console.log(
-    `Player : ${playerScore} Computer = ${compScore} Match Tied : ${matchTied}`
-  );
-  return playerScore > compScore
-    ? "Player Won the series"
-    : playerScore == compScore
-    ? "Series Tied"
-    : "Computer Won the series";
-}
-//Random input from computer
-function computerPlay() {
-  let option = ["rock", "paper", "scissor"];
-  return option[Math.floor(Math.random() * 3)];
-}
+resetButton.addEventListener("click", function () {
+  playerScore = 0;
+  compScore = 0;
+  matchTied = 0;
+  document.getElementById(
+    "current-score"
+  ).textContent = `Player : ${playerScore} Computer = ${compScore} Match Tied : ${matchTied}`;
+  document.getElementById("result").textContent = "";
+});
+
+buttons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    playerSelection = button.id;
+    if (playerScore !== 5 && compScore !== 5) {
+      gamePlay(playerSelection);
+      document.getElementById(
+        "current-score"
+      ).textContent = `Player : ${playerScore} Computer = ${compScore} Match Tied : ${matchTied}`;
+    }
+    if (playerScore == 5 || compScore == 5) {
+      document.getElementById("result").textContent =
+        playerScore > compScore
+          ? "Player Won the series"
+          : playerScore == compScore
+          ? "Series Tied"
+          : "Computer Won the series";
+    }
+  });
+});
+
 // Game and return the winner
-function gamePlay(computerSelection, playerSelection) {
+function gamePlay(playerSelection) {
+  let computerSelection = computerPlay();
   let optionValue = {
     rock: 4,
     paper: 2,
@@ -82,4 +82,10 @@ function gamePlay(computerSelection, playerSelection) {
     default:
       return "Check the program again";
   }
+}
+
+//Random input from computer
+function computerPlay() {
+  let option = ["rock", "paper", "scissor"];
+  return option[Math.floor(Math.random() * 3)];
 }
