@@ -1,0 +1,218 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
+
+body {
+  background-color: rgb(15, 13, 13);
+  color: azure;
+  text-align: center;
+  font-family: "Fredoka", sans-serif;
+}
+
+header {
+  text-align: center;
+  background-color: rgb(66, 65, 65);
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+h1 {
+  font-size: 7vw;
+  font-weight: 800;
+}
+#info {
+  font-size: 6vw;
+  margin: 20px auto;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 20px;
+}
+.score-box {
+  /* background-color: rgb(66, 65, 65); */
+  padding: 10px 0px;
+  font-size: 3vw;
+  border: 2px solid rgb(66, 65, 65);
+  border-radius: 20px;
+  width: 40%;
+}
+.player-name {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#player-icon,
+#comp-icon {
+  padding-bottom: 40px;
+  font-size: 50px;
+}
+#user-score,
+#comp-score {
+  font-size: 40px;
+}
+#score {
+  font-size: 40px;
+}
+
+.btn {
+  width: 30%;
+  font-size: 20vw;
+  padding: 10px 0px;
+  border-radius: 20px;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.overlay-container {
+  margin-top: 50%;
+  height: 50px;
+  font-size: 60px;
+}
+
+#play-again {
+  width: 50%;
+  font-size: 20px;
+  padding: 10px 0px;
+  border-radius: 10px;
+}

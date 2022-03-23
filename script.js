@@ -3,35 +3,39 @@ let playerScore = 0;
 let matchTied = 0;
 let playerSelection = "";
 
-const buttons = document.querySelectorAll(".option");
-const resetButton = document.querySelector("#reset-game");
+const buttons = document.querySelectorAll(".btn");
+const resetButton = document.querySelector("#play-again");
 
 resetButton.addEventListener("click", function () {
   playerScore = 0;
   compScore = 0;
   matchTied = 0;
-  document.getElementById(
-    "current-score"
-  ).textContent = `Player : ${playerScore} Computer = ${compScore} Match Tied : ${matchTied}`;
-  document.getElementById("result").textContent = "";
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("user-score").innerHTML = 0;
+  document.getElementById("comp-score").innerHTML = 0;
 });
 
 buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     playerSelection = button.id;
+    document.getElementById("player-icon").textContent = button.textContent;
     if (playerScore !== 5 && compScore !== 5) {
-      gamePlay(playerSelection);
-      document.getElementById(
-        "current-score"
-      ).textContent = `Player : ${playerScore} Computer = ${compScore} Match Tied : ${matchTied}`;
+      let winner = gamePlay(playerSelection);
+      console.log(winner);
+      if (winner == "Player") {
+        document.getElementById("user-score").innerHTML = `${playerScore}`;
+        document.getElementById(
+          "reset"
+        ).innerHTML = `You Won.<br>${playerScore} - ${compScore}`;
+      } else {
+        document.getElementById("comp-score").innerHTML = `${compScore}`;
+        document.getElementById(
+          "reset"
+        ).innerHTML = `You Lose.<br>${playerScore} - ${compScore}`;
+      }
     }
     if (playerScore == 5 || compScore == 5) {
-      document.getElementById("result").textContent =
-        playerScore > compScore
-          ? "Player Won the series"
-          : playerScore == compScore
-          ? "Series Tied"
-          : "Computer Won the series";
+      document.getElementById("overlay").style.display = "block";
     }
   });
 });
@@ -87,5 +91,9 @@ function gamePlay(playerSelection) {
 //Random input from computer
 function computerPlay() {
   let option = ["rock", "paper", "scissor"];
-  return option[Math.floor(Math.random() * 3)];
+  let optionIcon = { rock: "👊", paper: "✋", scissor: "✌" };
+  let randNum = Math.floor(Math.random() * 3);
+  document.getElementById("comp-icon").textContent =
+    optionIcon[option[randNum]];
+  return option[randNum];
 }

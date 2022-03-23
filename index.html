@@ -5,16 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
+
   <body>
+    <header>
+      <h1>Rock - Paper - Scissor</h1>
+    </header>
+    <p id="info">First to get 5 points wins</p>
     <div class="container">
-      <button id="reset-game">Reset Game!</button><br /><br />
-      <button id="rock" class="option">Rock</button>
-      <button id="paper" class="option">Paper</button>
-      <button id="scissor" class="option">Scissor</button>
-      <div id="current-score"></div>
-      <div id="result"></div>
+      <div class="score-box">
+        <p class="player-name">USER</p>
+        <div id="player-icon" class="icon">❔</div>
+        <p id="user-score">0</p>
+      </div>
+      <div class="score-box">
+        <p class="player-name">COMPUTER</p>
+        <div id="comp-icon" class="icon">❔</div>
+        <p id="comp-score">0</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <button id="rock" class="btn icon">👊</button>
+      <button id="paper" class="btn icon">✋</button>
+      <button id="scissor" class="btn icon">✌</button>
+    </div>
+
+    <div id="overlay" style="display: block">
+      <div class="overlay-container">
+        <div id="reset">You Won<br />5 - 0</div>
+        <button id="play-again" class="box">Play Again?</button>
+      </div>
     </div>
   </body>
 </html>
