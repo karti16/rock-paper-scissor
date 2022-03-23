@@ -13,6 +13,8 @@ resetButton.addEventListener("click", function () {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("user-score").innerHTML = 0;
   document.getElementById("comp-score").innerHTML = 0;
+  document.getElementById("info").innerHTML =
+    "Choose your weapon <span><br />First to get 5 points wins</span>";
 });
 
 buttons.forEach(function (button) {
@@ -27,11 +29,15 @@ buttons.forEach(function (button) {
         document.getElementById(
           "reset"
         ).innerHTML = `You Won.<br>${playerScore} - ${compScore}`;
+        document.getElementById("info").innerHTML = "You Won<br> &nbsp;";
+      } else if (winner == "Match Tied!") {
+        document.getElementById("info").innerHTML = "Match Tied!<br> &nbsp;";
       } else {
         document.getElementById("comp-score").innerHTML = `${compScore}`;
         document.getElementById(
           "reset"
         ).innerHTML = `You Lose.<br>${playerScore} - ${compScore}`;
+        document.getElementById("info").innerHTML = "You Lose<br> &nbsp;";
       }
     }
     if (playerScore == 5 || compScore == 5) {
